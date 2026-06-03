@@ -1,3 +1,5 @@
+import userData from '../fixtures/users/userData.json'
+
 describe('Horage HRM Tests', () => {
 
   const selectorsList = {
@@ -8,17 +10,7 @@ describe('Horage HRM Tests', () => {
     selectorAlertError: ".oxd-alert-content--error"
   }
 
-  const userData = {
-    userSuccess: {
-      username: 'Admin',
-      password: 'admin123'
-    },
 
-    userFail: {
-      username: 'Test',
-      password: 'Test'
-    }
-  }
 
   it('Login Success', () => {
     cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
