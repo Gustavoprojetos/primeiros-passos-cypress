@@ -13,13 +13,11 @@ describe('Horage HRM Tests', () => {
     lastNameField: "[name='lastName']",
     genericField: ".oxd-input",
     oxdSelectText: ".oxd-select-text",
-    dateField:"[placeholder='yyyy-dd-mm']",
-    closeButton:".--close",
-    submmitButton:"[type='submit']"
-    
+    dateField: "[placeholder='yyyy-dd-mm']",
+    closeButton: ".--close",
+    submmitButton: "[type='submit']",
+    genericDropdown: ".oxd-select-text--active"
   }
-
-
 
   it.only('User Info Update Success', () => {
     cy.visit('/auth/login')
@@ -29,17 +27,22 @@ describe('Horage HRM Tests', () => {
     cy.location('pathname').should('equal', '/web/index.php/dashboard/index')
     cy.get(selectorsList.dashboardGrid)
     cy.get(selectorsList.myInfoButton).click()
-    cy.get(selectorsList.firstNameField).clear().type(userData.userInfo.firstName)
-    cy.get(selectorsList.lastNameField).clear().type(userData.userInfo.lastName)
-    cy.get(selectorsList.genericField).eq(4).clear().type(userData.userInfo.employeeId) //Posição 4 do array de campos "eq(4)".
-    cy.get(selectorsList.genericField).eq(5).clear().type(userData.userInfo.otherId)
-    cy.get(selectorsList.genericField).eq(6).clear().type(userData.userInfo.DriversLicenseNumber)
-    cy.get(selectorsList.dateField).eq(0).clear().type(userData.userInfo.lincenseData)
+    cy.get(selectorsList.firstNameField).clear().type("firstNameTest  ")
+    cy.get(selectorsList.lastNameField).clear().type("lastNameTest")
+    cy.get(selectorsList.genericField).eq(4).clear().type("employeeId") //Posição 4 do array de campos "eq(4)".
+    cy.get(selectorsList.genericField).eq(5).clear().type("otherId")
+    cy.get(selectorsList.genericField).eq(6).clear().type("DriversLicenseNumber")
+    cy.get(selectorsList.dateField).eq(0).clear().type("2026-12-31")
     cy.get(selectorsList.closeButton).click()
+    
+    cy.get(selectorsList.genericDropdown).eq(0).click({force: true})
+    cy.contains('Brazilian').click();
+    cy.get(selectorsList.genericDropdown).eq(1).click()
+    cy.contains('Married').click();
+
     cy.get(selectorsList.submmitButton).eq(0).click()
     cy.get('body').should('contain', 'Successfully Updated')
     cy.get('.oxd-toast-close')
-    
   })
 
   it('Login Fail', () => {
