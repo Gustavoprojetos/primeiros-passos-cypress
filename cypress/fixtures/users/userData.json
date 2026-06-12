@@ -6,14 +6,5 @@
   "userFail": {
     "username": "Test",
     "password": "Test"
-  },
-  "userInfo": {
-    "firstName": "John",
-    "lastName": "Constantine",
-    "employeeId": "employeeId",
-    "otherId": "otherId",
-    "DriversLicenseNumber": "DriverLicenseNumberTest",
-    "lincenseData": "2024-31-12",
-    "oxdSelectText": "Brazilan"
   }
 }
