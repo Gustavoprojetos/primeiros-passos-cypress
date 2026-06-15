@@ -3,7 +3,9 @@ import LoginPage from '../pages/loginPage'
 import DashboardPage from '../pages/dashboardPage'
 import MenuPage from '../pages/menuPage'
 import MyInfo from '../pages/myInfo'
+const Chance = require('chance');
 
+const chance = new Chance();
 const loginPage = new LoginPage()
 const dashboarPage = new DashboardPage()
 const menuPage = new MenuPage()
@@ -19,7 +21,7 @@ describe('User Horage HRM Tests', () => {
 
     menuPage.accessMyiInfo()
 
-    myInfo.fillPersonalDatails("Luiz", "Gustavo")
+    myInfo.fillPersonalDatails(chance.first(), chance.last())
     myInfo.fillEmployeeDatails("employeeId", "otherId", "DriversLicenseNumber", "2026-05-12", "Belgian", "Married")
     myInfo.saveForm()
   })
